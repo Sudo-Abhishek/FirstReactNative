@@ -1,44 +1,35 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import Basic from './src/components/Basic';
+import TextInputComponent from './src/components/TextInput';
+import ScrollViewComponent from './src/components/ScrollView';
+import StylingDemo from './src/components/Styling';
+import FlexLayout from './src/components/FlexLayout';
+import TouchableComponents from './src/components/Touchable';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
   return (
     <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
+      <ScrollView
+        nestedScrollEnabled={true}
+        contentContainerStyle={styles.scrollViewContent}
+      >
+        <Basic />
+        <TextInputComponent />
+        <ScrollViewComponent />
+        <StylingDemo />
+        <FlexLayout />
+        <TouchableComponents />
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginBottom: 20,
+  },
+  scrollViewContent: {
+    padding: 20,
   },
 });
 
